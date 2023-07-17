@@ -4,6 +4,8 @@
 Feel free to copy any dotfiles or run the script to install my config.
 The script uses APT only.
 
+Feel free to report issues, provide suggestions, and pull requests. There are still many things that can be improved.
+
 ## Tested on:
 - Debian 12
 
