@@ -1,0 +1,315 @@
+@define-color base   #1e1e2e;
+@define-color mantle #181825;
+@define-color crust  #11111b;
+
+@define-color text     #cdd6f4;
+@define-color subtext0 #a6adc8;
+@define-color subtext1 #bac2de;
+
+@define-color surface0 #313244;
+@define-color surface1 #45475a;
+@define-color surface2 #585b70;
+
+@define-color overlay0 #6c7086;
+@define-color overlay1 #7f849c;
+@define-color overlay2 #9399b2;
+
+@define-color blue      #89b4fa;
+@define-color lavender  #b4befe;
+@define-color sapphire  #74c7ec;
+@define-color sky       #89dceb;
+@define-color teal      #94e2d5;
+@define-color green     #a6e3a1;
+@define-color yellow    #f9e2af;
+@define-color peach     #fab387;
+@define-color maroon    #eba0ac;
+@define-color red       #f38ba8;
+@define-color mauve     #cba6f7;
+@define-color pink      #f5c2e7;
+@define-color flamingo  #f2cdcd;
+@define-color rosewater #f5e0dc;
+
+* {
+    /* `otf-font-awesome` is required to be installed for icons */
+    font-family: FiraCodeNerdFont, "Material Design Icons";
+    font-size: 14px;
+    color: @text;
+}
+
+#window {
+    color: @flamingo;
+    background: @base;
+    transition-property: background-color;
+    border-radius: 100px;
+    padding: 0 10px;
+}
+
+#waybar.empty #window {
+    background: none;
+}
+
+window#waybar {
+    background-color: transparent;
+}
+
+/*
+window#waybar.empty {
+    background-color: transparent;
+}
+
+
+window#waybar.solo {
+    background-color: #FFFFFF;
+}
+*/
+
+button {
+    margin-right: 5px;
+    /* Avoid rounded borders under each button name */
+    border: none;
+    border-radius: 0;
+    background: @base;
+    box-shadow: none;
+    text-shadow: none;
+}
+
+button:hover {
+    background: @surface0;
+    border: none;
+    box-shadow: none;
+    text-shadow: none;
+}
+
+#workspaces button {
+    border: none;
+    padding: 0 10px;
+    background-color: @base;
+    color: @text;
+    transition: 0.2s;
+    border-radius: 100px;
+}
+
+#workspaces button:hover {
+    color: @peach;
+    background: @surface0;
+    transition: 0.2s;
+    box-shadow: none;
+    text-shadow: none;
+}
+
+#workspaces button.focused {
+    background: @surface0;
+    box-shadow: none;
+    text-shadow: none;
+}
+
+#workspaces button.urgent {
+    background: @red;
+    box-shadow: inset 0px 0px 0px 3px @base;
+    text-shadow: none;
+    color: @base;
+}
+
+#mode {
+    background: @base;
+    box-shadow: none;
+    text-shadow: none;
+}
+
+#clock,
+#battery,
+#cpu,
+#memory,
+#disk,
+#temperature,
+#backlight,
+#network,
+#pulseaudio,
+#wireplumber,
+#custom-media,
+#tray,
+#mode,
+#idle_inhibitor,
+#scratchpad,
+#mpd,
+#language,
+#keyboard-state {
+    padding: 0 15px;
+    background-color: @base;
+    border-radius: 100px;
+}
+
+#window,
+#workspaces {
+    margin: 0 5px;
+}
+
+/* If workspaces is the leftmost module, omit left margin */
+.modules-left > widget:first-child > #workspaces {
+    margin-left: 0;
+}
+
+/* If workspaces is the rightmost module, omit right margin */
+.modules-right > widget:last-child > #workspaces {
+    margin-right: 0;
+}
+
+#clock {
+    color: @peach;
+}
+
+#battery {
+    color: @lavender;
+}
+
+#battery.charging, #battery.plugged {
+    color: @lavender;
+}
+
+@keyframes blink {
+    to {
+        background-color: @base;
+        color: #000000;
+    }
+}
+
+#battery.critical:not(.charging) {
+    background-color: #f53c3c;
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+label:focus {
+    color: @text;
+}
+
+#cpu {
+    color: @lavender;
+}
+
+#memory {
+    color: @lavender;
+}
+
+#disk {
+    color: @lavender;
+}
+
+#backlight {
+    color: @flamingo;
+}
+
+#network {
+    color: @sky;
+}
+
+#network.disconnected {
+    color: @red;
+}
+
+#pulseaudio {
+    color: @green;
+}
+
+#pulseaudio.muted {
+    color: @red;
+}
+
+#wireplumber {
+    color: @rosewater;
+}
+
+#wireplumber.muted {
+    color: @red;
+}
+
+#custom-media {
+    color: @flamingo;
+    min-width: 100px;
+}
+
+#custom-media.custom-spotify {
+    color: @flamingo;
+}
+
+#custom-media.custom-vlc {
+    color: @flamingo;
+}
+
+#temperature {
+    color: @lavender;
+}
+
+#temperature.critical {
+    color: @text;
+    background-color: @red;
+}
+
+#tray {
+    color: @text;
+}
+
+#tray > .passive {
+    -gtk-icon-effect: dim;
+}
+
+#tray > .needs-attention {
+    -gtk-icon-effect: highlight;
+    background-color: #eb4d4b;
+}
+
+#idle_inhibitor {
+    color: @yellow;
+}
+
+#idle_inhibitor.activated {
+    background-color: @red;
+    box-shadow: inset 0px 0px 0px 3px @base;
+    color: @base;
+}
+
+#mpd {
+    background-color: #66cc99;
+    color: #d20f39;
+}
+
+#mpd.disconnected {
+    background-color: #f53c3c;
+}
+
+#mpd.stopped {
+    background-color: #90b1b1;
+}
+
+#mpd.paused {
+    background-color: #51a37a;
+}
+
+#language {
+    color: @peach;
+    min-width: 16px;
+}
+
+#keyboard-state {
+    color: @peach;
+    min-width: 16px;
+}
+
+#keyboard-state > label {
+    padding: 0 5px;
+}
+
+#keyboard-state > label.locked {
+    color: @red;
+}
+
+#scratchpad {
+    background: rgba(0, 0, 0, 0.2);
+}
+
+#scratchpad.empty {
+	background-color: transparent;
+}
