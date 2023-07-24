@@ -244,8 +244,9 @@ label:focus {
 }
 
 #temperature.critical {
-    color: @text;
-    background-color: @red;
+    color: @base;
+    background: @red;
+    box-shadow: inset 0px 0px 0px 3px @base;
 }
 
 #tray {
